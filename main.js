@@ -1,4 +1,5 @@
 const screen = document.querySelector('.screen')
+const operator = ['+','-','X','/']
 
 //add buttonChosen function to each button
 const buttons = document.querySelectorAll('button')
@@ -10,8 +11,30 @@ buttons.forEach((button, index) => {
 function buttonChosen(clicked)
 {   
     
-    screen.textContent = clicked;
-    console.log(clicked);
+    screen.textContent += clicked;
+    console.log(clicked, screen.textContent);
+    //clear screen when AC button clicked
+    if(clicked == 'AC'){
+      screen.textContent = '';
+    }
+    parseInput(screen.textContent)
+    
+}
+
+//parse input to get numbers and operators alone
+function parseInput(string){
+  let operator = '';
+  let firstNum = '';
+  let secondNum = '';
+    for(let i = 0; i < string.length; i++){
+        if((string.charAt(i) == '+')
+         ||(string.charAt(i) == '-')
+         ||(string.charAt(i) == 'x')
+         ||(string.charAt(i) == '/')){
+          operator = string.charAt(i)
+
+        }else continue;
+    }console.log([operator, firstNum]) 
 }
 
 
