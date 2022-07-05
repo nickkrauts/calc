@@ -17,9 +17,16 @@ function buttonChosen(clicked)
     if(clicked == 'AC'){
       screen.textContent = '';
     }
+
+    if(clicked == '%'){
+      screen.textContent = ((parseFloat(screen.textContent)/100));
+    }
     
+    if(clicked == '+/-'){
+      screen.textContent = -1 * (parseFloat(screen.textContent));
+    }
+
     parseInput(screen.textContent)
-    
 }
 
 //parse input to get numbers and operators alone
@@ -35,9 +42,9 @@ function parseInput(string){
           operator = string.charAt(i)
           //Get numbers and operator alone and store in variables
           firstNum = string.slice(0,i).trim();
-          firstNum = parseInt(firstNum);
+          firstNum = parseFloat(firstNum);
           secondNum = string.slice((i+1)).trim();
-          secondNum = parseInt(secondNum);
+          secondNum = parseFloat(secondNum);
         }else if(string.charAt(i) == '='){
           operate(operator, firstNum, secondNum);
           break;
